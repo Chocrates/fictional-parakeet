@@ -1,5 +1,5 @@
 name: 'Test Python Action'
 description: 'Tests if we can run python natively'
 runs:
-    using: 'python3'
+    using: 'python'
     main: 'main.py'
