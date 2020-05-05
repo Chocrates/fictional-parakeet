@@ -12,15 +12,13 @@ jobs:
           script: |
             let fs = require('fs')
             let path = require('path')
-            let content;
-            fs.readFile('.github/reply.template','utf8', (err,data) => {
-                if(err){
-                    console.log(err);
-                    process.exit(1);
-                 }
-                 console.log(data)
-                 content = data
-             })
-             console.log(fs)
-             console.log('test')
-             console.log(content)
+            let content = fs.readFileSync('.github/reply.template','utf8')
+            content.replace(/${handle}/g, () => `@${context.issue.user.login}`)
+            console.log(content)
+
+            github.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: content
+            })
