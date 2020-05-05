@@ -21,5 +21,6 @@ jobs:
                  console.log(data)
                  content = data
              })
+             console.log(fs)
              console.log('test')
              console.log(content)
