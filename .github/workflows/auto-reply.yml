@@ -18,6 +18,7 @@ jobs:
                     console.log(err);
                     process.exit(1);
                  }
+                 console.log(data)
                  content = data
              })
              console.log('test')
