@@ -11,9 +11,8 @@ jobs:
         with:
           script: |
             let fs = require('fs')
-            let path = require('path')
             let content = fs.readFileSync('.github/reply.template','utf8')
-            content = content.replace(/\${handle}/g, () => `@${context.issue.user.owner}`)
+            content = content.replace(/\${handle}/g, () => `@${context.issue.owner}`)
 
             github.issues.createComment({
                 issue_number: context.issue.number,
