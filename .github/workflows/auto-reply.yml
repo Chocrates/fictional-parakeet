@@ -19,5 +19,5 @@ jobs:
                     process.exit(1);
                  }
                  content = data
-             }
+             })
              console.log(content)
