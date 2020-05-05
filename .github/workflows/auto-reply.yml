@@ -1,0 +1,23 @@
+on:
+  issues:
+    types: [ opened ]
+
+jobs:
+  auto-reply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/github-script@0.9.0
+        with:
+          script: |
+            let fs = require('fs')
+            let path = require('path')
+            let content;
+            fs.readFile('.github/reply.template','utf8', (err,data) => {
+                if(err){
+                    console.log(err);
+                    process.exit(1);
+                 }
+                 content = data
+             }
+             console.log(content)
