@@ -13,6 +13,7 @@ jobs:
           script: |
             let fs = require('fs')
             console.log(JSON.stringify(context))
+            console.log(context.payload.issue.user.login)
             let content = fs.readFileSync('.github/reply.template','utf8')
             content = content.replace(/\${handle}/g, () => `@${context.issue.owner}`)
 
