@@ -13,7 +13,8 @@ jobs:
             let fs = require('fs')
             let path = require('path')
             let content = fs.readFileSync('.github/reply.template','utf8')
-            content.replace(/${handle}/g, () => `@${context.issue.user.login}`)
+            content = content.replace(/\${handle}/g, () => `@${context.issue.user.login}`)
+            console.log(context.issue.user.login)
             console.log(content)
 
             github.issues.createComment({
